@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+  load-lambda:
+    image : localstack/localstack
+    restart: always
+    container_name: aws_local
+    hostname: awslocal
+    ports:
+      - '4566-4583:4566-4583'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./.localstack:/var/lib/localstack
+    environment: &env
+      EAGER_SERVICE_LOADING: 1
+      SERVICES: lambda,cloudwatch
+      DOCKER_HOST: unix:///var/run/docker.sock
+      LOCALSTACK_HOST: awslocal
+      DEFAULT_REGION: us-east-1
+      PERSISTENCE: 1
+      AWS_ACCESS_KEY_ID: foo
+      AWS_SECRET_ACCESS_KEY: bar
+
+  setup:
+    build:
+      context: .
+      dockerfile: Dockerfile.localstack
+    working_dir: "/script"
+    environment: *env
+    depends_on:
+      - load-lambda
+
+

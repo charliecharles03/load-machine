@@ -1,0 +1,9 @@
+FROM localstack/localstack
+
+WORKDIR /script
+
+COPY script .
+
+RUN chmod a+x ./setup-stack.sh
+
+ENTRYPOINT ["./setup-stack.sh"]

@@ -1,0 +1,11 @@
+{
+  "name": "load-machine",
+  "version": "1.0.0",
+  "description": "tyring to make lambda fast and take more load the expected",
+  "main": "lambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bunny",
+  "license": "ISC"
+}
