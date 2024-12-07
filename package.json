@@ -4,8 +4,16 @@
   "description": "tyring to make lambda fast and take more load the expected",
   "main": "lambda.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf ./dist/ ./script/setup/lambda.zip",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "tsc",
+    "zip": "zip -r -j ./script/setup/lambda.zip ./dist/"
   },
   "author": "bunny",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "zip-build": "^1.8.0"
+  }
 }
